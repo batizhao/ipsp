@@ -148,8 +148,8 @@
         u.initPlugin(jQuery("#unityPlayer")[0], "web.unity3d");
     });
 
-    function callback(str) {
-        $.post('api/score?message=' + str,
+    function callback(result) {
+        $.post('api/score?message=' + result,
                 function (data) {
                     console.log(data);
                 });
