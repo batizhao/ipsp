@@ -149,10 +149,17 @@
     });
 
     function callback(result) {
-        $.post('api/score?message=' + result,
-                function (data) {
-                    console.log(data);
-                });
+        message = JSON.stringify(result);
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json',
+            dataType: 'text',
+            url: 'api/score1',
+            data: '{"userId":1,"result":' + message + '}',
+            success: function (data) {
+                console.log(data);
+            }
+        });
     }
 
     function getJson() {
