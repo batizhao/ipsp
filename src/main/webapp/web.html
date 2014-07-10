@@ -100,8 +100,6 @@
         </div>
     </div>
 </div>
-<div id="xyOp">need update</div>
-<div onclick="getJson()">SendMessage</div>
 <script>
     var config = {
         width: 960,
@@ -162,10 +160,8 @@
         });
     }
 
-    function getJson() {
-        var mess = "";
-        var uid = "123";
-        var uname = "456";
+    function getJson(){
+        u.getUnity().SendMessage("main", "getParamete","3");
     }
 
 </script>

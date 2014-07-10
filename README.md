@@ -1,22 +1,29 @@
 ipsp
 ====
 
-Unity Web Player 和 REST API 交互例子
+这是一个 Unity Web Player 和 REST API 交互的例子，使用了 Spring Boot 和 Gradle 构建了一个 API 微服务，实现了两种把 Unity 交互结果上传后台的方法。
 
-## 回调客户端 Js 提交结果
+## 1. 客户端上传结果
 callback 方法为 Unity 回调函数，在生成考试结果后，通过调用 callback 函数，把数据传给服务器。
 
-### 简单传值
-> user 在服务端通过 session 绑定
+### 1.1 简单传值
+
+#### 测试
+
+	curl -X POST http://localhost:8080/api/score?message=C
+
+#### JQuery 提交
 
     function callback(result) {
-        $.post('api/score?message=' + result,
-                function (data) {
-                    console.log(data);
-                });
+        $.post(
+        	'api/score?message=' + result,
+            function (data) {
+                console.log(data);
+            }
+        );
     }
 
-### JSON 传值
+### 1.2 JSON 传值
 
 #### 测试
 
@@ -39,5 +46,21 @@ callback 方法为 Unity 回调函数，在生成考试结果后，通过调用 
         });
     }
 
-## 课件直接提交结果
-此种方式需要在课件中取得当前用户的 ID，然后调用 api/score1 直接提交数据到后台。
+## 2. 服务端上传结果
+> 此种方式需要实现一个回调函数，发送当前用户的 ID 给 Unity。
+
+### 取得当前用户的 ID
+
+实现回调函数 getJson ，并调用 SendMessage 方法。第三个参数为当前用户 ID。Unity 会取得消息后，直接调用 api/score1 进行绑定和上传。
+
+	function getJson(){
+        u.getUnity().SendMessage("main", "getParamete","3");
+    }
+    
+    
+## 3. 分析
+这两种方法，相同点是都要实现一个回调函数。  
+前一种方法更开放，Unity 只需要输出结果就行，更容易 Web 开发和调试。  
+后一种方法对 Web 端来说更简单，但提交结果是在 Untiy 里实现，调试和维护起来比较麻烦。   
+
+安全性上后一种方法稍大于前一种方法，但都不安全，存在篡改结果的可能。
