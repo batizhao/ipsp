@@ -4,14 +4,13 @@ ipsp
 这是一个 Unity Web Player 和 REST API 交互的例子，使用了 Spring Boot 和 Gradle 构建了一个 API 微服务，Unity 程序调用 API 上传数据到后台。
 
 ##1. 相关文件说明
-* *main.html* 目录列表入口
-* *courseMenu.html*  Web宿主文件
+* *courseMenu.html*  Web入口
 * *courseMenu/courseMenu.unity3d* Unity 主程序文件（由 courseMenu.html 调取）
 * *courseMenu/2.png* Unity 互动页面加载时所显示的 logo 图片
 * *course/CXXX_ppt.course* 某具体课件的应知部分资源包，XXX为课件编号
 * *course/CXXX_3d.course* 某具体课件的考核部分资源包，XXX为课件编号
 
-*main.html* 和 *courseMenu.html* 演示了如何在网页中调用 Unity 主程序，使其进入指定的课件内容和指定的部分。
+测试地址：http://localhost:8080/courseMenu.html
 
 ##2. courseMenu.html
 
@@ -78,10 +77,7 @@ ipsp
 
 	function OnUnityRequestInit()
 	{			    
-		u.getUnity().SendMessage("Asset Loader", "SetCourseLevel", "Junior");
-		u.getUnity().SendMessage("Asset Loader", "SetCourseNumber", getQueryString('name'));
-		u.getUnity().SendMessage("Asset Loader", "SetCourseType", getQueryString('mode'));
-		u.getUnity().SendMessage("_mainFrameBasicService", "SetWebBaseUrl", "http://localhost:8080/course/");
+		u.getUnity().SendMessage("Asset Loader", "SetCourse", "http://localhost:8080/Junior/2.2.1/Examine");
         u.getUnity().SendMessage("_mainFrameBasicService", "SetUid", "111444");
 	}	
 	

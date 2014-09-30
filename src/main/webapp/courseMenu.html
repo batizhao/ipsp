@@ -62,18 +62,15 @@
 			
 			function OnUnityRequestInit()
 			{			    
-				u.getUnity().SendMessage("Asset Loader", "SetCourseLevel", "Junior");
-				u.getUnity().SendMessage("Asset Loader", "SetCourseNumber", getQueryString('name'));
-				u.getUnity().SendMessage("Asset Loader", "SetCourseType", getQueryString('mode'));
-				u.getUnity().SendMessage("_mainFrameBasicService", "SetWebBaseUrl", "http://localhost:8080/course/");
+				u.getUnity().SendMessage("Asset Loader", "SetCourse", "http://localhost:8080/Junior/2.2.1/Examine");
                 u.getUnity().SendMessage("_mainFrameBasicService", "SetUid", "111444");
 			}
 
-			function getQueryString(name) {
+			/*function getQueryString(name) {
                 var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
                 var r = window.location.search.substr(1).match(reg);
                 if (r != null) return unescape(r[2]); return null;
-            }
+            }*/
 
             /*function OnUnityDebugUploadScore(score) {
                 alert(score);
