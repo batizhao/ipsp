@@ -7,8 +7,8 @@ ipsp
 * *courseMenu.html*  Web入口
 * *courseMenu/courseMenu.unity3d* Unity 主程序文件（由 courseMenu.html 调取）
 * *courseMenu/2.png* Unity 互动页面加载时所显示的 logo 图片
-* *course/CXXX_ppt.course* 某具体课件的应知部分资源包，XXX为课件编号
-* *course/CXXX_3d.course* 某具体课件的考核部分资源包，XXX为课件编号
+* *CXXX_ppt.course* 某具体课件的应知部分资源包，XXX为课件编号
+* *CXXX_3d.course* 某具体课件的考核部分资源包，XXX为课件编号
 
 测试地址：http://localhost:8080/courseMenu.html
 
@@ -92,6 +92,7 @@ ipsp
 ## 4. 说明
 > 如果初次使用请先安装 Gradle，第一次 run 时可能会下载很多包。
 
-* 在项目根目录使用 gradle bootRun 启动，访问 localhost:8080/main.html
+* 在项目根目录使用 gradle bootRun 启动，访问 localhost:8080/courseMenu.html
+* 进入场景后，可以使用键盘“上箭头”快速跳过考试场景，这个动作会触发一个后台 API（api/score1） 调用。
 * 在浏览器开发工具中查看请求和响应头、内容。
 * 在后台 Console 中观察打印结果（API 接口未持久化，只打印出接收到的数据）。
