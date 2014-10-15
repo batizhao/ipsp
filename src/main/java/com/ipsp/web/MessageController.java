@@ -24,7 +24,7 @@ public class MessageController {
     @RequestMapping(value = "/score1", method = RequestMethod.POST)
     public String addScore1(@RequestBody Message message){
 
-        System.out.println("User: " + message.getUserId() + " Score: " + message.getResult());
+        System.out.println("User: " + message.getUserId() + " coursewareCode: " + message.getCoursewareCode() + " Score: " + message.getResult());
 
         return "ok";
     }

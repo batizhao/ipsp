@@ -3,6 +3,7 @@ package com.ipsp.domain;
 public class Message {
 
     private int userId;
+    private String coursewareCode;
     private String Result;
 
     public int getUserId() {
@@ -11,6 +12,14 @@ public class Message {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getCoursewareCode() {
+        return coursewareCode;
+    }
+
+    public void setCoursewareCode(String coursewareCode) {
+        this.coursewareCode = coursewareCode;
     }
 
     public String getResult() {
