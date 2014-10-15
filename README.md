@@ -85,7 +85,7 @@ ipsp
 
 ### 测试
 
-    curl -l -H "Content-type: application/json" -X POST -d '{"userId":1,"coursewareCode":"C112",”"result":"85"}' http://localhost:8080/api/score1
+    curl -l -H "Content-type: application/json" -X POST -d '{"userId":1,"coursewareCode":"C112","result":"85"}' http://localhost:8080/api/score1
     
 > 在其它类型的服务中，如果像 Demo 这样，课件和 Web Server 在同一个服务之下，服务端只需要实现同样的持久化 API 接口，Unity 会按相对路径 /api/score1 调用服务端接口。
 
